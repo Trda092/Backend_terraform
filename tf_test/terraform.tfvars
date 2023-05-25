@@ -1,4 +1,0 @@
-aws_access_key = "ASIAW6QOZOED4Y3NHHM4"
-aws_secret_key = "auLCecMg/fkyA7k9ZpaPx72irCSg5Uf3Ql2HAdky"
-aws_session_token = "FwoGZXIvYXdzENj//////////wEaDNOD1O4ISkpcr6epQSLIAb72zuY78SxML2IQyursuFzdhqtW6T8oFZxwRUGzC424lX0GP6F0Yqdo9eQ0tbOkcDS/wLOVDj7iOM5CpwH4JRpvDJRCISDqPT0iGwDRVQceQS3CpBeoO28FDl32N5RpX7wZM5Yv9H/sFo/r+rbGwyPIoqwPr5DATAkOfL/IYtAzo4wXu12d1RV+ohQQxDH3zN5eK/HgI2dtElxJA6Zq2KMjCRH3mgstOVaY3l/Ulggp0c1cL2IoV6YeZmmBLfHW3D48N10Sr2ZpKNSyuKMGMi122XhH2rIEvGWZnsTIEUsADpXHfL3aXka6Il6Qi137DRu/hscpvexWlVIxi/M="
-key_name = "vockey"
