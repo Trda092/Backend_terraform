@@ -6,6 +6,19 @@ const app = express();
 app.use(express.json());
 
 //method post
+app.post('/api/credentials', (req, res) => {
+  const data = req.body;
+  const jsonData = JSON.stringify(data, null, 2);
+  fs.writeFile('./credentials.json', jsonData, 'utf8', (err) => {
+    if (err) {
+      console.error('Error writing to file:', err);
+      res.status(500).json({ error: 'An error occurred while writing to the file.' });
+    } else {res.json({message: 'Data written to file successfully.'});
+    }
+  });
+});
+
+
 app.post('/api/database', (req, res) => {
   const data = req.body;
   const jsonData = JSON.stringify(data, null, 2);
