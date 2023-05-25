@@ -25,8 +25,20 @@ app.post('/api/database', (req, res) => {
   fs.writeFile('./tf_db/database.json', jsonData, 'utf8', (err) => {
     if (err) {
       console.error('Error writing to file:', err);
-      res.status(500).json({ error: 'An error occurred while writing to the file.' });
-    } else {res.json({message: 'Data written to file successfully.'});
+      res.status(500).json({error: 'An error occurred while writing to the file.'});
+    } else {
+      exec('cd tf_db && terraform.exe init && terraform.exe plan -out conf && terraform.exe apply conf', (err, stdout, stderr)=>{
+        if(err){
+          console.log(`error: ${err.message}`);
+          return;
+        }
+        if(stderr){
+          console.log(`stderr: ${stderr}`);
+          return;
+        }
+        console.log(`stdout: ${stdout}`)
+      })
+      res.json({message: 'Data written to file successfully.'});
     }
   });
 });
@@ -39,7 +51,18 @@ app.post('/api/s3', (req, res) => {
         console.error('Error writing to file:', err);
         res.status(500).json({ error: 'An error occurred while writing to the file.' });
       } else {
-  res.json({ message: 'Data written to file successfully.' });
+        exec('cd tf_s3 && terraform.exe init && terraform.exe plan -out conf && terraform.exe apply conf', (err, stdout, stderr)=>{
+          if(err){
+            console.log(`error: ${err.message}`);
+            return;
+          }
+          if(stderr){
+            console.log(`stderr: ${stderr}`);
+            return;
+          }
+          console.log(`stdout: ${stdout}`)
+        })
+    res.json({ message: 'Data written to file successfully.' });
       }
     });
   });
@@ -52,6 +75,17 @@ app.post('/api/ec2', (req, res) => {
         console.error('Error writing to file:', err);
         res.status(500).json({ error: 'An error occurred while writing to the file.' });
       } else {
+        exec('cd tf_ec2 && terraform.exe init && terraform.exe plan -out conf && terraform.exe apply conf', (err, stdout, stderr)=>{
+          if(err){
+            console.log(`error: ${err.message}`);
+            return;
+          }
+          if(stderr){
+            console.log(`stderr: ${stderr}`);
+            return;
+          }
+          console.log(`stdout: ${stdout}`)
+        })
   res.json({ message: 'Data written to file successfully.' });
       }
     });
@@ -66,6 +100,17 @@ app.put('/api/database', (req, res) => {
       console.error('Error writing to file:', err);
       res.status(500).json({ error: 'An error occurred while writing to the file.' });
     } else {
+      exec('cd tf_db && terraform.exe init && terraform.exe plan -out conf && terraform.exe apply conf', (err, stdout, stderr)=>{
+        if(err){
+          console.log(`error: ${err.message}`);
+          return;
+        }
+        if(stderr){
+          console.log(`stderr: ${stderr}`);
+          return;
+        }
+        console.log(`stdout: ${stdout}`)
+      })
       res.json({ message: 'Data written to file successfully.' });
     }
   });
@@ -79,6 +124,17 @@ app.put('/api/s3', (req, res) => {
       console.error('Error writing to file:', err);
       res.status(500).json({ error: 'An error occurred while writing to the file.' });
     } else {
+      exec('cd tf_s3 && terraform.exe init && terraform.exe plan -out conf && terraform.exe apply conf', (err, stdout, stderr)=>{
+        if(err){
+          console.log(`error: ${err.message}`);
+          return;
+        }
+        if(stderr){
+          console.log(`stderr: ${stderr}`);
+          return;
+        }
+        console.log(`stdout: ${stdout}`)
+      })
       res.json({ message: 'Data written to file successfully.' });
     }
   });
@@ -92,6 +148,17 @@ app.put('/api/ec2', (req, res) => {
       console.error('Error writing to file:', err);
       res.status(500).json({ error: 'An error occurred while writing to the file.' });
     } else {
+      exec('cd tf_ec2 && terraform.exe init && terraform.exe plan -out conf && terraform.exe apply conf', (err, stdout, stderr)=>{
+        if(err){
+          console.log(`error: ${err.message}`);
+          return;
+        }
+        if(stderr){
+          console.log(`stderr: ${stderr}`);
+          return;
+        }
+        console.log(`stdout: ${stdout}`)
+      })
       res.json({ message: 'Data written to file successfully.' });
     }
   });
@@ -106,6 +173,17 @@ app.delete('/api/database', (req, res) => {
       console.error('Error writing to file:', err);
       res.status(500).json({ error: 'An error occurred while writing to the file.' });
     } else {
+      exec('cd tf_db && terraform.exe init && terraform.exe destroy', (err, stdout, stderr)=>{
+        if(err){
+          console.log(`error: ${err.message}`);
+          return;
+        }
+        if(stderr){
+          console.log(`stderr: ${stderr}`);
+          return;
+        }
+        console.log(`stdout: ${stdout}`)
+      })
       res.json({ message: 'Data written to file successfully.' });
     }
   });
@@ -119,6 +197,17 @@ app.delete('/api/s3', (req, res) => {
       console.error('Error writing to file:', err);
       res.status(500).json({ error: 'An error occurred while writing to the file.' });
     } else {
+      exec('cd tf_s3 && terraform.exe init && terraform.exe destroy', (err, stdout, stderr)=>{
+        if(err){
+          console.log(`error: ${err.message}`);
+          return;
+        }
+        if(stderr){
+          console.log(`stderr: ${stderr}`);
+          return;
+        }
+        console.log(`stdout: ${stdout}`)
+      })
       res.json({ message: 'Data written to file successfully.' });
     }
   });
@@ -132,6 +221,17 @@ app.delete('/api/ec2', (req, res) => {
       console.error('Error writing to file:', err);
       res.status(500).json({ error: 'An error occurred while writing to the file.' });
     } else {
+      exec('cd tf_ec2 && terraform.exe init && terraform.exe destroy', (err, stdout, stderr)=>{
+        if(err){
+          console.log(`error: ${err.message}`);
+          return;
+        }
+        if(stderr){
+          console.log(`stderr: ${stderr}`);
+          return;
+        }
+        console.log(`stdout: ${stdout}`)
+      })
       res.json({ message: 'Data written to file successfully.' });
     }
   });
