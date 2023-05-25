@@ -32,6 +32,11 @@ resource "aws_instance" "Servers" {
   key_name               = var.key_name
   vpc_security_group_ids = [aws_security_group.allow_ssh_web.id]
   subnet_id = aws_subnet.PublicNets[0].id
-  tags = {Name = local.ec2_data.name}
+  tags = {Name = local.ec2_data.ec2_name}
+}
+
+resource "aws_ec2_instance_state" "Servers" {
+  instance_id = aws_instance.Servers.id
+  state       = local.ec2_data.ec2_state
 }
 

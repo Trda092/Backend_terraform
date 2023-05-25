@@ -14,5 +14,5 @@ resource "aws_db_instance" "mydb" {
   password             = local.database_data.db_password
   db_subnet_group_name = aws_db_subnet_group.rds_subnet_group.name
   skip_final_snapshot  = true
-  publicly_accessible = true
+  publicly_accessible = (var.db_access && local.database_data.db_access)
 }
