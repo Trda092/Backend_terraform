@@ -54,6 +54,7 @@ app.post('/api/ec2', (req, res) => {
         res.status(500).json({ error: 'An error occurred while writing to the file.' });
       } else {
         console.log('Data written to file successfully.');
+        
         res.json({ message: 'Data written to file successfully.' });
       }
     });
