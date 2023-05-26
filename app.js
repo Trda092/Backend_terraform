@@ -268,6 +268,32 @@ app.delete('/api/ec2', (req, res) => {
   });
 });
 
+//get
+app.get('/api/database', (req, res) => {
+  const data = req.body;
+      connection.query('select * from db where idf = ?', [data.db_idf], function(err,result){
+        if (err) throw err
+        res.send(result)
+      })
+    });
+
+app.get('/api/s3', (req, res) => {
+  const data = req.body;
+      connection.query('select * from s3 where name = ?', [data.s3_bucket], function(err,result){
+        if (err) throw err
+        res.send(result)
+      })
+    });
+
+app.get('/api/ec2', (req, res) => {
+  const data = req.body;
+      connection.query('select * from ec2 where name = ?', [data.ec2_name], function(err,result){
+        if (err) throw err
+        res.send(result)
+      })
+    });
+
+
   app.listen(3000, () => {
     console.log('Server is running on port 3000');
   });
