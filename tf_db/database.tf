@@ -1,5 +1,5 @@
 resource "aws_db_subnet_group" "rds_subnet_group" {
-  name       = "demo_subnet_group"
+  name       = "subnet_group${local.database_idf_name}"
   subnet_ids = [for subnet in aws_subnet.PublicNets : subnet.id]
 }
 
